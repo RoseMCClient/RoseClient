@@ -1,5 +1,9 @@
 package net.minecraft.client.entity;
 
+import org.lwjgl.input.Keyboard;
+
+import com.github.RoseMC.RoseClient.game.GameValues;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.MovingSoundMinecartRiding;
 import net.minecraft.client.audio.PositionedSoundRecord;
@@ -169,6 +173,15 @@ public class EntityPlayerSP extends AbstractClientPlayer
     {
         if (this.worldObj.isBlockLoaded(new BlockPos(this.posX, 0.0D, this.posZ)))
         {
+        	if(Keyboard.isKeyDown(Keyboard.KEY_G))
+        	{
+        		GameValues.SPRINTING = true;
+        	}
+        	if(Keyboard.isKeyDown(Keyboard.KEY_H))
+        	{
+        		GameValues.SPRINTING = false;
+        	}
+        	
             super.onUpdate();
 
             if (this.isRiding())

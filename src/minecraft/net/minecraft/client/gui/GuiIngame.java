@@ -1,5 +1,7 @@
 package net.minecraft.client.gui;
 
+import com.github.RoseMC.RoseClient.game.GameValues;
+import com.github.RoseMC.RoseClient.gui.GuiHook;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
@@ -152,6 +154,8 @@ public class GuiIngame extends Gui
         {
             this.renderTooltip(scaledresolution, partialTicks);
         }
+        
+        GuiHook.Render(partialTicks);
 
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         this.mc.getTextureManager().bindTexture(icons);
@@ -345,6 +349,8 @@ public class GuiIngame extends Gui
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         GlStateManager.disableLighting();
         GlStateManager.enableAlpha();
+        
+        Minecraft.getMinecraft().thePlayer.setSprinting(GameValues.SPRINTING);
     }
 
     protected void renderTooltip(ScaledResolution sr, float partialTicks)

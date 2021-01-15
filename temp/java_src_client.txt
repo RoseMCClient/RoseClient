@@ -1,5 +1,8 @@
 src\minecraft\Start.java
 src\minecraft\com\github\RoseMC\RoseClient\RoseClient.java
+src\minecraft\com\github\RoseMC\RoseClient\game\GameValues.java
+src\minecraft\com\github\RoseMC\RoseClient\gui\GuiHook.java
+src\minecraft\com\github\RoseMC\RoseClient\utils\Wrapper.java
 src\minecraft\net\minecraft\block\Block.java
 src\minecraft\net\minecraft\block\BlockAir.java
 src\minecraft\net\minecraft\block\BlockAnvil.java
