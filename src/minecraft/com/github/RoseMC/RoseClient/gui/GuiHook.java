@@ -1,6 +1,6 @@
 package com.github.RoseMC.RoseClient.gui;
 
-import java.awt.Color;
+import java.awt.*;
 
 import com.github.RoseMC.RoseClient.*;
 import com.github.RoseMC.RoseClient.game.*;
@@ -26,6 +26,48 @@ public class GuiHook
 		else
 		{
 			Wrapper.fontRenderer.drawStringWithShadow("         OFF", 5, 15, Color.RED.getRGB());
+		}
+		
+		Wrapper.fontRenderer.drawStringWithShadow("Boost FPS: ", 5, 25, Color.WHITE.getRGB());
+		
+		if(GameValues.BOOSTFPS)
+		{
+			Wrapper.fontRenderer.drawStringWithShadow("              ON", 5, 25, Color.GREEN.getRGB());
+		}
+		else
+		{
+			Wrapper.fontRenderer.drawStringWithShadow("              OFF", 5, 25, Color.RED.getRGB());
+		}
+		
+		if(Minecraft.getMinecraft().getDebugFPS() >= 60)
+		{
+			Wrapper.fontRenderer.drawStringWithShadow("FPS: "+Minecraft.getMinecraft().getDebugFPS(), 5, 35, Color.GREEN.getRGB());
+		}
+		else if(Minecraft.getMinecraft().getDebugFPS() >= 30)
+		{
+			Wrapper.fontRenderer.drawStringWithShadow("FPS: "+Minecraft.getMinecraft().getDebugFPS(), 5, 35, Color.YELLOW.getRGB());
+		}
+		else if(Minecraft.getMinecraft().getDebugFPS() >= 10)
+		{
+			Wrapper.fontRenderer.drawStringWithShadow("FPS: "+Minecraft.getMinecraft().getDebugFPS(), 5, 35, Color.ORANGE.getRGB());
+		}
+		else
+		{
+			Wrapper.fontRenderer.drawStringWithShadow("FPS: "+Minecraft.getMinecraft().getDebugFPS(), 5, 35, Color.RED.getRGB());
+		}
+		
+		
+		// Improve FPS
+		
+		if(GameValues.BOOSTFPS)
+		{
+			Minecraft.getMinecraft().gameSettings.enableVsync = false;
+			Minecraft.getMinecraft().gameSettings.limitFramerate = Integer.MAX_VALUE;
+		}
+		else
+		{
+			Minecraft.getMinecraft().gameSettings.enableVsync = true;
+			Minecraft.getMinecraft().gameSettings.limitFramerate = 60;
 		}
 	}
 }

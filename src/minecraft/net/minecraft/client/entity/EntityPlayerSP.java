@@ -182,6 +182,15 @@ public class EntityPlayerSP extends AbstractClientPlayer
         		GameValues.SPRINTING = false;
         	}
         	
+        	if(Keyboard.isKeyDown(Keyboard.KEY_B))
+        	{
+        		GameValues.BOOSTFPS = true;
+        	}
+        	if(Keyboard.isKeyDown(Keyboard.KEY_N))
+        	{
+        		GameValues.BOOSTFPS = false;
+        	}
+        	
             super.onUpdate();
 
             if (this.isRiding())

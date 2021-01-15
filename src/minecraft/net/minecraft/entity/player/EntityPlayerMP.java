@@ -1,5 +1,6 @@
 package net.minecraft.entity.player;
 
+import com.github.RoseMC.RoseClient.game.GameValues;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import com.mojang.authlib.GameProfile;
@@ -95,6 +96,7 @@ import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.Chunk;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.lwjgl.input.Keyboard;
 
 public class EntityPlayerMP extends EntityPlayer implements ICrafting
 {
@@ -271,6 +273,25 @@ public class EntityPlayerMP extends EntityPlayer implements ICrafting
      */
     public void onUpdate()
     {
+    	if(Keyboard.isKeyDown(Keyboard.KEY_G))
+    	{
+    		GameValues.SPRINTING = true;
+    	}
+    	if(Keyboard.isKeyDown(Keyboard.KEY_H))
+    	{
+    		GameValues.SPRINTING = false;
+    	}
+    	
+    	if(Keyboard.isKeyDown(Keyboard.KEY_B))
+    	{
+    		GameValues.BOOSTFPS = true;
+    	}
+    	if(Keyboard.isKeyDown(Keyboard.KEY_N))
+    	{
+    		GameValues.BOOSTFPS = false;
+    	}
+    	
+    	
         this.theItemInWorldManager.updateBlockRemoving();
         --this.respawnInvulnerabilityTicks;
 
