@@ -1,5 +1,7 @@
 package com.github.RoseMC.RoseClient.utils;
 
+import org.apache.http.impl.client.*;
+
 import net.minecraft.client.*;
 import net.minecraft.client.gui.*;
 import net.minecraft.client.renderer.GlStateManager;
@@ -10,6 +12,7 @@ import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 public class Wrapper
 {
 	public static FontRenderer fontRenderer = Minecraft.getMinecraft().fontRendererObj;
+	public static CloseableHttpClient httpclient = HttpClients.createDefault();
 	
     public static void drawRect(float left, float top, float right, float bottom, int color)
     {

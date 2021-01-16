@@ -14,29 +14,29 @@ public class GuiHook
 	public static void Render(float partialTicks)
 	{	
 		ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft());
-		Wrapper.drawRect(0f, 0f, Wrapper.fontRenderer.getStringWidth(RoseClient.CLIENT+" "+RoseClient.VERSION+"    "), 50f, new Color(0.0f, 0.0f, 0.0f, 0.5f).getRGB());
+		Wrapper.drawRect(0f, 0f, Wrapper.fontRenderer.getStringWidth(RoseClient.CLIENT+" "+RoseClient.VERSION+"                              "), 50f, new Color(0.0f, 0.0f, 0.0f, 0.5f).getRGB());
 		Wrapper.fontRenderer.drawStringWithShadow(RoseClient.CLIENT+" "+RoseClient.VERSION, 5, 5, Color.WHITE.getRGB());
 		
 		Wrapper.fontRenderer.drawStringWithShadow("Sprint: ", 5, 15, Color.WHITE.getRGB());
 		
 		if(GameValues.SPRINTING)
 		{
-			Wrapper.fontRenderer.drawStringWithShadow("         ON", 5, 15, Color.GREEN.getRGB());
+			Wrapper.fontRenderer.drawStringWithShadow("         ON (G to enable, H to disable)", 5, 15, Color.GREEN.getRGB());
 		}
 		else
 		{
-			Wrapper.fontRenderer.drawStringWithShadow("         OFF", 5, 15, Color.RED.getRGB());
+			Wrapper.fontRenderer.drawStringWithShadow("         OFF (G to enable, H to disable", 5, 15, Color.RED.getRGB());
 		}
 		
 		Wrapper.fontRenderer.drawStringWithShadow("Boost FPS: ", 5, 25, Color.WHITE.getRGB());
 		
 		if(GameValues.BOOSTFPS)
 		{
-			Wrapper.fontRenderer.drawStringWithShadow("              ON", 5, 25, Color.GREEN.getRGB());
+			Wrapper.fontRenderer.drawStringWithShadow("              ON (B to enable, N to disable", 5, 25, Color.GREEN.getRGB());
 		}
 		else
 		{
-			Wrapper.fontRenderer.drawStringWithShadow("              OFF", 5, 25, Color.RED.getRGB());
+			Wrapper.fontRenderer.drawStringWithShadow("              OFF  (B to enable, N to disable", 5, 25, Color.RED.getRGB());
 		}
 		
 		if(Minecraft.getMinecraft().getDebugFPS() >= 60)

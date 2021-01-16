@@ -1,7 +1,11 @@
 package com.github.RoseMC.RoseClient;
 
+import org.apache.http.client.ClientProtocolException;
 import org.lwjgl.opengl.*;
 
+import com.github.RoseMC.RoseClient.json.*;
+import com.github.RoseMC.RoseClient.parsing.*;
+import com.github.RoseMC.RoseClient.serialization.*;
 import com.mojang.authlib.*;
 import com.mojang.authlib.yggdrasil.*;
 
@@ -11,17 +15,23 @@ import net.minecraft.util.*;
 import java.io.*;
 import java.net.*;
 import java.util.*;
+import java.util.logging.Logger;
 
 import javax.swing.*;
 
 public class RoseClient
 {
 	public static String CLIENT = "RoseClient";
-	public static String VERSION = "Alpha v1.2";
+	public static String VERSION = "Alpha v1.3";
 	
 	public static void StartClient()
 	{
 		Display.setTitle(CLIENT+" "+VERSION);
+		
+		// Initialize GSON
+		new GSONHelpers();
+		Logger.getGlobal().info("Initialized GSON!");
+		ModSerialization.loadMods();
 	}
 	
 	public static void OnAuth() throws Exception

@@ -80,6 +80,7 @@ local.properties
 .scala_dependencies
 
 *.login_cache
+*.mod_cache
 .worksheet
 
 # Uncomment this line if you wish to ignore the project description file.
