@@ -3,7 +3,7 @@ package net.minecraft.client.gui;
 // EDIT
 import com.github.RoseMC.RoseClient.RoseClient;
 // END EDIT
-
+import com.github.RoseMC.RoseClient.serialization.ModSerialization;
 import com.google.common.collect.Lists;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -14,6 +14,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
+
+import javax.swing.JOptionPane;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.OpenGlHelper;
@@ -238,7 +241,7 @@ public class GuiMainMenu extends GuiScreen implements GuiYesNoCallback
     {
         this.buttonList.add(new GuiButton(1, this.width / 2 - 100, p_73969_1_, I18n.format("menu.singleplayer", new Object[0])));
         this.buttonList.add(new GuiButton(2, this.width / 2 - 100, p_73969_1_ + p_73969_2_ * 1, I18n.format("menu.multiplayer", new Object[0])));
-        this.buttonList.add(this.realmsButton = new GuiButton(14, this.width / 2 - 100, p_73969_1_ + p_73969_2_ * 2, I18n.format("menu.online", new Object[0])));
+        this.buttonList.add(this.realmsButton = new GuiButton(14, this.width / 2 - 100, p_73969_1_ + p_73969_2_ * 2, I18n.format("Mods", new Object[0])));
     }
 
     /**
@@ -284,7 +287,12 @@ public class GuiMainMenu extends GuiScreen implements GuiYesNoCallback
 
         if (button.id == 14 && this.realmsButton.visible)
         {
-            this.switchToRealms();
+        	String URL = JOptionPane.showInputDialog("Please enter the URL to the mod you want to add: ");
+        	
+        	if(URL != null)
+        	{
+        		ModSerialization.addMod(URL);
+        	}
         }
 
         if (button.id == 4)
