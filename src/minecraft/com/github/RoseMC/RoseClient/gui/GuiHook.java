@@ -69,5 +69,16 @@ public class GuiHook
 			Minecraft.getMinecraft().gameSettings.enableVsync = true;
 			Minecraft.getMinecraft().gameSettings.limitFramerate = 60;
 		}
+		
+		// Zoom
+		
+		if(GameValues.ZOOMED)
+		{
+			Minecraft.getMinecraft().gameSettings.fovSetting = 30;
+		}
+		else
+		{
+			Minecraft.getMinecraft().gameSettings.fovSetting = GameValues.FOV;
+		}
 	}
 }

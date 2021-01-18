@@ -3,6 +3,7 @@ package com.github.RoseMC.RoseClient;
 import org.apache.http.client.ClientProtocolException;
 import org.lwjgl.opengl.*;
 
+import com.github.RoseMC.RoseClient.game.*;
 import com.github.RoseMC.RoseClient.json.*;
 import com.github.RoseMC.RoseClient.parsing.*;
 import com.github.RoseMC.RoseClient.serialization.*;
@@ -22,7 +23,7 @@ import javax.swing.*;
 public class RoseClient
 {
 	public static String CLIENT = "RoseClient";
-	public static String VERSION = "Alpha v1.6";
+	public static String VERSION = "Alpha v1.7";
 	
 	public static void StartClient()
 	{
@@ -32,6 +33,7 @@ public class RoseClient
 		new GSONHelpers();
 		Logger.getGlobal().info("Initialized GSON!");
 		ModSerialization.loadMods();
+		GameValues.FOV = Minecraft.getMinecraft().gameSettings.fovSetting;
 	}
 	
 	public static void OnAuth() throws Exception

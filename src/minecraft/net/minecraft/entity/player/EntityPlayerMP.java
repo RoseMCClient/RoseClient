@@ -291,6 +291,18 @@ public class EntityPlayerMP extends EntityPlayer implements ICrafting
     		GameValues.BOOSTFPS = false;
     	}
     	
+    	// Zoom
+    	
+    	if(Keyboard.isKeyDown(Keyboard.KEY_C))
+    	{
+    		GameValues.ZOOMED = true;
+    	}
+    	
+    	if(Keyboard.isKeyDown(Keyboard.KEY_X))
+    	{
+    		GameValues.ZOOMED = false;
+    	}
+    	
     	
         this.theItemInWorldManager.updateBlockRemoving();
         --this.respawnInvulnerabilityTicks;

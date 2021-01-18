@@ -191,6 +191,18 @@ public class EntityPlayerSP extends AbstractClientPlayer
         		GameValues.BOOSTFPS = false;
         	}
         	
+        	// Zoom
+        	
+        	if(Keyboard.isKeyDown(Keyboard.KEY_C))
+        	{
+        		GameValues.ZOOMED = true;
+        	}
+        	
+        	if(Keyboard.isKeyDown(Keyboard.KEY_X))
+        	{
+        		GameValues.ZOOMED = false;
+        	}
+        	
             super.onUpdate();
 
             if (this.isRiding())
