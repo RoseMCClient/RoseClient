@@ -138,6 +138,14 @@ public class Caller
 			{
 				scopedRegister = "";
 			}
+			else if(c.function.equals("call") && c.args.size() == 1)
+			{
+				String name = c.args.get(0);
+				Section section = new Section();
+				section.name = name;
+				
+				Caller.callSection(m, section);
+			}
 		}
 	}
 }
