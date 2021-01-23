@@ -1,6 +1,6 @@
 package net.minecraft.entity.player;
 
-import com.github.RoseMC.RoseClient.game.GameValues;
+import com.github.RoseMC.RoseClient.game.*;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import com.mojang.authlib.GameProfile;
@@ -14,6 +14,8 @@ import net.minecraft.block.BlockFence;
 import net.minecraft.block.BlockFenceGate;
 import net.minecraft.block.BlockWall;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.gui.inventory.GuiInventory;
+import net.minecraft.command.server.CommandMessage;
 import net.minecraft.crash.CrashReport;
 import net.minecraft.crash.CrashReportCategory;
 import net.minecraft.entity.Entity;
@@ -302,7 +304,6 @@ public class EntityPlayerMP extends EntityPlayer implements ICrafting
     	{
     		GameValues.ZOOMED = false;
     	}
-    	
     	
         this.theItemInWorldManager.updateBlockRemoving();
         --this.respawnInvulnerabilityTicks;

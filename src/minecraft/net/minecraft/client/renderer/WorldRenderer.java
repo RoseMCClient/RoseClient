@@ -1,11 +1,7 @@
 package net.minecraft.client.renderer;
 
 import com.google.common.primitives.Floats;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.nio.FloatBuffer;
-import java.nio.IntBuffer;
-import java.nio.ShortBuffer;
+import java.nio.*;
 import java.util.Arrays;
 import java.util.BitSet;
 import java.util.Comparator;
@@ -190,7 +186,7 @@ public class WorldRenderer
             this.vertexFormat = p_181668_2_;
             this.field_181677_f = p_181668_2_.getElement(this.field_181678_g);
             this.needsUpdate = false;
-            this.byteBuffer.limit(this.byteBuffer.capacity());
+            ((Buffer)this.byteBuffer).limit(this.byteBuffer.capacity());
         }
     }
 
@@ -556,8 +552,8 @@ public class WorldRenderer
         else
         {
             this.isDrawing = false;
-            this.byteBuffer.position(0);
-            this.byteBuffer.limit(this.func_181664_j() * 4);
+            ((Buffer)this.byteBuffer).position(0);
+            ((Buffer)this.byteBuffer).limit(this.func_181664_j() * 4);
         }
     }
 
