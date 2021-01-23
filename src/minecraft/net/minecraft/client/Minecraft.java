@@ -23,8 +23,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.Proxy;
 import java.net.SocketAddress;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
+import java.nio.*;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Collections;
@@ -847,7 +846,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage
             bytebuffer.putInt(i << 8 | i >> 24 & 255);
         }
 
-        bytebuffer.flip();
+        ((Buffer)bytebuffer).flip();
         return bytebuffer;
     }
 

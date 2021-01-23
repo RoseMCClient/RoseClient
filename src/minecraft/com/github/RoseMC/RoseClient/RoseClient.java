@@ -23,7 +23,7 @@ import javax.swing.*;
 public class RoseClient
 {
 	public static String CLIENT = "RoseClient";
-	public static String VERSION = "Alpha v1.8";
+	public static String VERSION = "Alpha v1.9";
 	
 	public static void StartClient()
 	{

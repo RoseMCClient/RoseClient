@@ -39,23 +39,23 @@ public class WorldRenderer
 
     private void func_181670_b(int p_181670_1_)
     {
-        if (p_181670_1_ > this.rawIntBuffer.remaining())
+        if (p_181670_1_ > ((Buffer)this.rawIntBuffer).remaining())
         {
-            int i = this.byteBuffer.capacity();
+            int i = ((Buffer)this.byteBuffer).capacity();
             int j = i % 2097152;
-            int k = j + (((this.rawIntBuffer.position() + p_181670_1_) * 4 - j) / 2097152 + 1) * 2097152;
+            int k = j + (((((Buffer)this.rawIntBuffer).position() + p_181670_1_) * 4 - j) / 2097152 + 1) * 2097152;
             LogManager.getLogger().warn("Needed to grow BufferBuilder buffer: Old size " + i + " bytes, new size " + k + " bytes.");
-            int l = this.rawIntBuffer.position();
+            int l = ((Buffer)this.rawIntBuffer).position();
             ByteBuffer bytebuffer = GLAllocation.createDirectByteBuffer(k);
-            this.byteBuffer.position(0);
+            ((Buffer)this.byteBuffer).position(0);
             bytebuffer.put(this.byteBuffer);
-            bytebuffer.rewind();
+            ((Buffer)bytebuffer).rewind();
             this.byteBuffer = bytebuffer;
             this.rawFloatBuffer = this.byteBuffer.asFloatBuffer().asReadOnlyBuffer();
             this.rawIntBuffer = this.byteBuffer.asIntBuffer();
-            this.rawIntBuffer.position(l);
+            ((Buffer)this.rawIntBuffer).position(l);
             this.field_181676_c = this.byteBuffer.asShortBuffer();
-            this.field_181676_c.position(l << 1);
+            ((Buffer)this.field_181676_c).position(l << 1);
         }
     }
 
@@ -93,25 +93,25 @@ public class WorldRenderer
 
             if (i1 != l1)
             {
-                this.rawIntBuffer.limit(i1 * l + l);
-                this.rawIntBuffer.position(i1 * l);
+                ((Buffer)this.rawIntBuffer).limit(i1 * l + l);
+                ((Buffer)this.rawIntBuffer).position(i1 * l);
                 this.rawIntBuffer.get(aint);
                 int j1 = i1;
 
                 for (int k1 = ainteger[i1].intValue(); j1 != l1; k1 = ainteger[k1].intValue())
                 {
-                    this.rawIntBuffer.limit(k1 * l + l);
-                    this.rawIntBuffer.position(k1 * l);
+                	((Buffer)this.rawIntBuffer).limit(k1 * l + l);
+                	((Buffer)this.rawIntBuffer).position(k1 * l);
                     IntBuffer intbuffer = this.rawIntBuffer.slice();
-                    this.rawIntBuffer.limit(j1 * l + l);
-                    this.rawIntBuffer.position(j1 * l);
+                    ((Buffer)this.rawIntBuffer).limit(j1 * l + l);
+                    ((Buffer)this.rawIntBuffer).position(j1 * l);
                     this.rawIntBuffer.put(intbuffer);
                     bitset.set(j1);
                     j1 = k1;
                 }
 
-                this.rawIntBuffer.limit(l1 * l + l);
-                this.rawIntBuffer.position(l1 * l);
+                ((Buffer)this.rawIntBuffer).limit(l1 * l + l);
+                ((Buffer)this.rawIntBuffer).position(l1 * l);
                 this.rawIntBuffer.put(aint);
             }
 
@@ -121,13 +121,13 @@ public class WorldRenderer
 
     public WorldRenderer.State func_181672_a()
     {
-        this.rawIntBuffer.rewind();
+    	((Buffer)this.rawIntBuffer).rewind();
         int i = this.func_181664_j();
-        this.rawIntBuffer.limit(i);
+        ((Buffer)this.rawIntBuffer).limit(i);
         int[] aint = new int[i];
         this.rawIntBuffer.get(aint);
-        this.rawIntBuffer.limit(this.rawIntBuffer.capacity());
-        this.rawIntBuffer.position(i);
+        ((Buffer)this.rawIntBuffer).limit(this.rawIntBuffer.capacity());
+        ((Buffer)this.rawIntBuffer).position(i);
         return new WorldRenderer.State(aint, new VertexFormat(this.vertexFormat));
     }
 
@@ -158,7 +158,7 @@ public class WorldRenderer
 
     public void setVertexState(WorldRenderer.State state)
     {
-        this.rawIntBuffer.clear();
+    	((Buffer)this.rawIntBuffer).clear();
         this.func_181670_b(state.getRawBuffer().length);
         this.rawIntBuffer.put(state.getRawBuffer());
         this.vertexCount = state.getVertexCount();
@@ -425,7 +425,7 @@ public class WorldRenderer
     public void addVertexData(int[] vertexData)
     {
         this.func_181670_b(vertexData.length);
-        this.rawIntBuffer.position(this.func_181664_j());
+        ((Buffer)this.rawIntBuffer).position(this.func_181664_j());
         this.rawIntBuffer.put(vertexData);
         this.vertexCount += vertexData.length / this.vertexFormat.func_181719_f();
     }

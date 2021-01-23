@@ -4,7 +4,7 @@ import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.gson.JsonSyntaxException;
 import java.io.IOException;
-import java.nio.FloatBuffer;
+import java.nio.*;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.Callable;
@@ -2033,9 +2033,9 @@ public class EntityRenderer implements IResourceManagerReloadListener
      */
     private FloatBuffer setFogColorBuffer(float red, float green, float blue, float alpha)
     {
-        this.fogColorBuffer.clear();
+        ((Buffer)this.fogColorBuffer).clear();
         this.fogColorBuffer.put(red).put(green).put(blue).put(alpha);
-        this.fogColorBuffer.flip();
+        ((Buffer)this.fogColorBuffer).flip();
         return this.fogColorBuffer;
     }
 

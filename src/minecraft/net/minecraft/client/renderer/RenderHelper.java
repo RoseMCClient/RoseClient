@@ -1,6 +1,6 @@
 package net.minecraft.client.renderer;
 
-import java.nio.FloatBuffer;
+import java.nio.*;
 import net.minecraft.util.Vec3;
 import org.lwjgl.opengl.GL11;
 
@@ -60,9 +60,9 @@ public class RenderHelper
      */
     private static FloatBuffer setColorBuffer(float p_74521_0_, float p_74521_1_, float p_74521_2_, float p_74521_3_)
     {
-        colorBuffer.clear();
+        ((Buffer)colorBuffer).clear();
         colorBuffer.put(p_74521_0_).put(p_74521_1_).put(p_74521_2_).put(p_74521_3_);
-        colorBuffer.flip();
+        ((Buffer)colorBuffer).flip();
         return colorBuffer;
     }
 
