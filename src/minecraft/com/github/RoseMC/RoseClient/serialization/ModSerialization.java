@@ -37,7 +37,6 @@ public class ModSerialization
 					Mod m = Parser.ParseMod(i);
 					ModSerialization.MODS.add(m);
 					Section init = new Section();
-					init.type = "section";
 					init.name = "onInit";
 					Caller.callSection(m, init);
 				}

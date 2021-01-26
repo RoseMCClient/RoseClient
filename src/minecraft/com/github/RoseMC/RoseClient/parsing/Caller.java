@@ -1,5 +1,7 @@
 package com.github.RoseMC.RoseClient.parsing;
 
+import net.minecraft.client.Minecraft;
+
 public class Caller
 {
 	public static void callSection(Mod m, Section s)
@@ -137,6 +139,80 @@ public class Caller
 			else if(c.function.equals("regdescope") && c.args.size() == 0)
 			{
 				scopedRegister = "";
+			}
+			else if(c.function.equals("chat") && c.args.size() == 1)
+			{
+				String output = c.args.get(0);
+				
+				if(!scopedRegister.equals(""))
+				{
+					String register = null;
+					if(scopedRegister.equals("R1"))
+					{
+						register = R1;
+					}
+					else if(scopedRegister.equals("R2"))
+					{
+						register = R2;
+					}
+					else if(scopedRegister.equals("R3"))
+					{
+						register = R3;
+					}
+					else if(scopedRegister.equals("R4"))
+					{
+						register = R4;
+					}
+					else if(scopedRegister.equals("R5"))
+					{
+						register = R5;
+					}
+					else if(scopedRegister.equals("R6"))
+					{
+						register = R6;
+					}
+					
+					output = output.replaceAll("%", register);
+				}
+				
+				Minecraft.getMinecraft().thePlayer.sendChatMessage(output);
+			}
+			else if(c.function.equals("ifdef") && c.args.size() == 2)
+			{
+				String name = c.args.get(0);
+				Section section = new Section();
+				section.name = name;
+				
+				String register = null;
+				if(scopedRegister.equals("R1"))
+				{
+					register = R1;
+				}
+				else if(scopedRegister.equals("R2"))
+				{
+					register = R2;
+				}
+				else if(scopedRegister.equals("R3"))
+				{
+					register = R3;
+				}
+				else if(scopedRegister.equals("R4"))
+				{
+					register = R4;
+				}
+				else if(scopedRegister.equals("R5"))
+				{
+					register = R5;
+				}
+				else if(scopedRegister.equals("R6"))
+				{
+					register = R6;
+				}
+				
+				if(register.equals(c.args.get(1)))
+				{
+					Caller.callSection(m, section);
+				}
 			}
 			else if(c.function.equals("call") && c.args.size() == 1)
 			{

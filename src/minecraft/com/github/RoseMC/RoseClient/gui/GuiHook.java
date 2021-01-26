@@ -12,7 +12,7 @@ import net.minecraft.client.gui.*;
 public class GuiHook
 {
 	public static void Render(float partialTicks)
-	{	
+	{
 		ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft());
 		Wrapper.drawRect(0f, 0f, Wrapper.fontRenderer.getStringWidth(RoseClient.CLIENT+" "+RoseClient.VERSION+"                              "), 50f, new Color(0.0f, 0.0f, 0.0f, 0.5f).getRGB());
 		Wrapper.fontRenderer.drawStringWithShadow(RoseClient.CLIENT+" "+RoseClient.VERSION, 5, 5, Color.WHITE.getRGB());
