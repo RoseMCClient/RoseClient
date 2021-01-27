@@ -14,7 +14,7 @@ public class GuiHook
 	public static void Render(float partialTicks)
 	{
 		ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft());
-		Wrapper.drawRect(0f, 0f, Wrapper.fontRenderer.getStringWidth(RoseClient.CLIENT+" "+RoseClient.VERSION+"                              "), 50f, new Color(0.0f, 0.0f, 0.0f, 0.5f).getRGB());
+		Wrapper.drawRect(0f, 0f, Wrapper.fontRenderer.getStringWidth(RoseClient.CLIENT+" "+RoseClient.VERSION+"                              "), 80f, new Color(0.0f, 0.0f, 0.0f, 0.5f).getRGB());
 		Wrapper.fontRenderer.drawStringWithShadow(RoseClient.CLIENT+" "+RoseClient.VERSION, 5, 5, Color.WHITE.getRGB());
 		
 		Wrapper.fontRenderer.drawStringWithShadow("Sprint: ", 5, 15, Color.WHITE.getRGB());
@@ -56,6 +56,11 @@ public class GuiHook
 			Wrapper.fontRenderer.drawStringWithShadow("FPS: "+Minecraft.getMinecraft().getDebugFPS(), 5, 35, Color.RED.getRGB());
 		}
 		
+		// Coords
+		
+		Wrapper.fontRenderer.drawStringWithShadow("X: "+Math.round(Minecraft.getMinecraft().thePlayer.posX), 5, 50, Color.WHITE.getRGB());
+		Wrapper.fontRenderer.drawStringWithShadow("Y: "+Math.round(Minecraft.getMinecraft().thePlayer.posY), 5, 60, Color.WHITE.getRGB());
+		Wrapper.fontRenderer.drawStringWithShadow("Z: "+Math.round(Minecraft.getMinecraft().thePlayer.posZ), 5, 70, Color.WHITE.getRGB());
 		
 		// Improve FPS
 		
